@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Project</title>
+</head>
+<style>
+    body{
+        padding: 40px 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to right, #2a2a2a, #212121, #191919, #010002);
+     
+    }
+   
+ 
+    
+    .flex{
+        position:relative ;
+        margin: 20px auto;
+        text-align: center;
+        border-radius: 10px;
+        background-color:black;
+        padding: 10px;
+        width: 300px;
+        height: 400px;
+
+
+        
+    }
+    .flex::before{
+        content: " ";
+        position: absolute;
+        left: -2px;
+        top: -2x;
+        background:linear-gradient(45deg, #fb0094, #0000ff,#00ff00,#ffff00, #ff0000, #fb0094,#0000ff);
+        background-size:500%;
+        width:calc(100% + 10px);
+        height:calc(100% + 10px);
+        border-radius: 10px;
+        z-index: -1;
+        animation: g 3s ease alternate infinite;
+    } 
+    .flex::before{
+        filter: blur(10px);
+    }
+  
+    @keyframes g{
+        0%{
+            background-position: 0% 50%;
+        }
+        50%{
+            background-position: 100% 50%;
+        }
+        0%{
+            background-position: 0% 50%;
+        }
+    }
+    button{
+      
+        margin: 4px;
+        padding: 5px 5px;
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        background-color: black;
+       color: white;
+        
+       
+    }
+    button:hover{
+        background-color: white;
+       color: black;
+       
+    }
+    #display{
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+</style>
+
+<body>
+
+
+  
+    <div class="flex">
+        <h1 style="color: white;">Ganesh Calculator</h1>
+        <input type="text" id="display" >
+        <div>
+            <button class="button" type="button">C</button>
+            <button class="button" type="button">%</button>
+            <button class="button" type="button">M+</button>
+            <button class="button" type="button">M-</button>
+        </div> 
+        <div> 
+            <button class="button" type="button">7</button>
+            <button class="button" type="button">8</button>
+            <button class="button" type="button">9</button>
+            <button class="button" type="button">/</button>
+        </div> 
+        <div> 
+            <button class="button" type="button">4</button>
+            <button class="button" type="button">5</button>
+            <button class="button" type="button">6</button>
+            <button class="button" type="button">*</button>
+        </div> 
+        <div> 
+            <button class="button" type="button">1</button>
+            <button class="button" type="button">2</button>
+            <button class="button" type="button">3</button>
+            <button class="button" type="button">+</button>
+        </div> 
+        <div> 
+            <button class="button" type="button">0</button>
+            <button class="button" type="button">.</button>
+            <button class="button" type="button">=</button>
+            <button class="button" type="button">-</button>
+        </div>
+
+    </div>
+    <script>
+        let string = "";
+    let buttons = document.querySelectorAll('.button');
+    Array.from(buttons).forEach((button)=>{
+      button.addEventListener('click', (e)=>{
+        if(e.target.innerHTML == '='){
+          string = eval(string);
+          document.querySelector('input').value = string;
+        }
+        else if(e.target.innerHTML == 'C'){
+          string = ""
+          document.querySelector('input').value = string;
+        }
+        else{ 
+        console.log(e.target)
+        string = string + e.target.innerHTML;
+        document.querySelector('input').value = string;
+          }
+      })
+    })
+    </script>
+
+</body>
+</html>
